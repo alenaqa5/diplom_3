@@ -15,10 +15,15 @@ class RecoverPassword(BasePage):
     def show_password(self):
         self.wait_and_find_element(AuthFormLocators.input_password).send_keys(data.password)
         self.wait_and_find_element(AuthFormLocators.displaying_password).click()
-        self.wait_and_find_element(AuthFormLocators.active_password_field)
+
+    def password_field_is_active(self):
+        return self.is_element_visible(AuthFormLocators.active_password_field)
 
     def click_recover_password_button(self):
         self.wait_and_find_element(AuthFormLocators.recover_password_button).click()
+
+    def check_password_field_presented(self):
+        return self.wait_and_find_element(AuthFormLocators.recover_password_field).text
 
 
 
