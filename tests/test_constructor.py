@@ -13,7 +13,7 @@ class TestConstructor:
     def test_close_ingredient_popup(self, driver):
         ingredient = Constructor(driver)
         ingredient.tap_on_ingredient()
-        ingredient.close_modal_window_of_ingredient()
+        ingredient.close_modal_window()
         sleep(1)
         assert ingredient.check_popup_closed() is True
 

@@ -5,3 +5,5 @@ class ProfileLocators:
     logout_button = [By.XPATH,"//button[text()='Выход']"]
     to_orders_history = [By.XPATH,"//a[contains(@href, '/account/order-history')]"]
     modal_overlay = [By.XPATH, "//div[contains(@class,'Modal_modal_overlay')]"]
+    order_id = [By.XPATH, "//p[contains(@class,'text text_type_digits-default')]"]
+

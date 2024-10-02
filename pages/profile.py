@@ -11,3 +11,7 @@ class Profile(BasePage):
     def logout(self):
         logout_button = self.wait_element_to_be_clickable(ProfileLocators.logout_button)
         logout_button.click()
+
+    def get_order_id(self):
+        return self.wait_and_find_element(ProfileLocators.order_id).text
+

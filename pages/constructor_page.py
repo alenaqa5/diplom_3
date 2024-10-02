@@ -13,8 +13,8 @@ class Constructor(BasePage):
     def check_popup_closed(self):
         return self.is_element_not_visible(ConstructorLocators.ingredient_details_popup_title)
 
-    def close_modal_window_of_ingredient(self):
-        self.wait_and_find_element(ConstructorLocators.close_ingredient_info_popup).click()
+    def close_modal_window(self):
+        self.wait_and_find_element(ConstructorLocators.close_popup).click()
 
     def add_ingredient_to_burger(self):
         self.wait_and_find_element(ConstructorLocators.ingredient)
