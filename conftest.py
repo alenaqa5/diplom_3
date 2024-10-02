@@ -23,5 +23,23 @@ def driver(request):
 def create_user():
     user = requests.post(url=Endpoints.register, json=UserPayloads.create_user)
     token = user.json().get("accessToken")
-    yield token
+    refresh_token = user.json().get("refreshToken")
+    yield token, refresh_token
     requests.delete(url=Endpoints.delete_user, headers={'Authorization': f'Bearer{token}'})
+
+
+@pytest.fixture(params=['firefox', 'chrome'])
+def login(create_user, request):
+    access_token, refresh_token = create_user
+    browser = request.param
+    if request.param == 'firefox':
+        browser = webdriver.Firefox()
+    elif request.param == 'chrome':
+        browser = webdriver.Chrome()
+    browser.maximize_window()
+    browser.get(data.URLS['main_page'])
+    browser.execute_script(f"window.localStorage.setItem('accessToken', '{access_token}');")
+    browser.execute_script(f"window.localStorage.setItem('refreshToken', '{refresh_token}');")
+    browser.refresh()
+    yield browser
+    browser.quit()
