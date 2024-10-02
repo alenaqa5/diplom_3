@@ -27,6 +27,3 @@ class BasePage:
     def is_element_not_visible(self, locator):
         return not self.is_element_visible(locator)
 
-    def scroll_to_element(self, element) -> WebElement:
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
-        return WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(element))
