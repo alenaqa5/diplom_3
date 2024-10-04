@@ -4,5 +4,6 @@ URLS = {
     'main_page': 'https://stellarburgers.nomoreparties.site/',
     'auth_form': 'https://stellarburgers.nomoreparties.site/login',
     'profile': 'https://stellarburgers.nomoreparties.site/account/profile',
-    'orders': 'https://stellarburgers.nomoreparties.site/feed'
+    'orders': 'https://stellarburgers.nomoreparties.site/feed',
+    'orders_history': 'https://stellarburgers.nomoreparties.site/account/order-history'
        }
