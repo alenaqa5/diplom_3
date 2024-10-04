@@ -1,5 +1,4 @@
 from pages.constructor_page import Constructor
-from time import sleep
 import pytest
 import allure
 
