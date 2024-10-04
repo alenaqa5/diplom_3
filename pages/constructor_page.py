@@ -12,6 +12,10 @@ class Constructor(BasePage):
         title = self.wait_and_find_element(ConstructorLocators.ingredient_details_popup_title)
         return title.text
 
+    @allure.step('Дождаться закрытия попапа')
+    def wait_popup_is_closed(self):
+        return self.wait_element_disappeared(ConstructorLocators.ingredient_details_popup_title)
+
     @allure.step('Проверить закрыт ли попап')
     def check_popup_closed(self):
         return self.is_element_not_visible(ConstructorLocators.ingredient_details_popup_title)

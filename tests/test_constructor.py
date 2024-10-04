@@ -17,7 +17,7 @@ class TestConstructor:
         ingredient = Constructor(driver)
         ingredient.tap_on_ingredient()
         ingredient.close_modal_window()
-        sleep(1)
+        ingredient.wait_popup_is_closed()
         assert ingredient.check_popup_closed() is True
 
     @allure.title('Получение счетчика добавленного ингредиента')
