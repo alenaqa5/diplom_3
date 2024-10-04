@@ -1,17 +1,18 @@
+import data
 from pages.constructor_page import Constructor
 import pytest
 import allure
 
 class TestConstructor:
     @allure.title('Отображение попапа ингредиента')
-    @pytest.mark.parametrize('driver', [('chrome','main_page'), ('firefox', 'main_page')], indirect=True)
+    @pytest.mark.parametrize('driver', data.PARAMETERS_FOR_CONSTRUCTOR_TESTS, indirect=True)
     def test_open_ingredient_popup(self, driver):
         ingredient = Constructor(driver)
         ingredient.tap_on_ingredient()
         assert ingredient.check_ingredient_details_popup_title() == 'Детали ингредиента'
 
     @allure.title('Закрытие попапа с ингредиентом')
-    @pytest.mark.parametrize('driver', [('chrome', 'main_page'), ('firefox', 'main_page')], indirect=True)
+    @pytest.mark.parametrize('driver', data.PARAMETERS_FOR_CONSTRUCTOR_TESTS, indirect=True)
     def test_close_ingredient_popup(self, driver):
         ingredient = Constructor(driver)
         ingredient.tap_on_ingredient()
@@ -20,7 +21,7 @@ class TestConstructor:
         assert ingredient.check_popup_closed() is True
 
     @allure.title('Получение счетчика добавленного ингредиента')
-    @pytest.mark.parametrize('driver', [('chrome','main_page'), ('firefox', 'main_page')], indirect=True)
+    @pytest.mark.parametrize('driver', data.PARAMETERS_FOR_CONSTRUCTOR_TESTS, indirect=True)
     def test_get_counter_after_adding_ingredient(self, driver):
         ingredient = Constructor(driver)
         ingredient_counter_before_adding = ingredient.get_counter_number()

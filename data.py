@@ -7,3 +7,6 @@ URLS = {
     'orders': 'https://stellarburgers.nomoreparties.site/feed',
     'orders_history': 'https://stellarburgers.nomoreparties.site/account/order-history'
        }
+
+
+PARAMETERS_FOR_CONSTRUCTOR_TESTS =  [('chrome','main_page'), ('firefox', 'main_page')]
