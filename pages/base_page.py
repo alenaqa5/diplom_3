@@ -15,12 +15,16 @@ class BasePage:
         WebDriverWait(self.driver, self.time).until(expected_conditions.element_to_be_clickable(locator))
         return self.driver.find_element(*locator)
 
+    def wait_element_disappeared(self, locator):
+        WebDriverWait(self.driver, self.time).until(expected_conditions.invisibility_of_element_located(locator))
+
+    def wait_url_to_be_loaded(self, url):
+        WebDriverWait(self.driver, self.time).until(expected_conditions.url_to_be(url))
 
     def is_element_visible(self, locator):
         try:
             element = WebDriverWait(self.driver, self.time).until(
-                expected_conditions.visibility_of_element_located(locator)
-            )
+                expected_conditions.visibility_of_element_located(locator))
             return True
         except Exception:
             return False

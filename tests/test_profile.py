@@ -1,13 +1,13 @@
 import data
 from pages.profile import Profile
-from time import sleep
 import allure
+
 class TestProfile:
     @allure.title('Переход в историю заказов')
     def test_go_to_orders_history_in_profile(self, login):
         profile = Profile(login)
         profile.go_to_profile()
-        sleep(5)
+        profile.modal_window_is_closed()
         profile.go_to_orders_history()
         assert login.current_url == data.URLS['orders_history']
 
@@ -15,7 +15,7 @@ class TestProfile:
     def test_logout(self, login):
         profile = Profile(login)
         profile.go_to_profile()
-        sleep(3)
+        profile.modal_window_is_closed()
         profile.logout()
-        sleep(2)
+        profile.user_redirected(data.URLS['auth_form'])
         assert login.current_url == data.URLS['auth_form']
