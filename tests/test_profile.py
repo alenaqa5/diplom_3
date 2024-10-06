@@ -7,7 +7,7 @@ class TestProfile:
     def test_go_to_orders_history_in_profile(self, login):
         profile = Profile(login)
         profile.go_to_profile()
-        profile.modal_window_is_closed()
+        profile.wait_element_disappeared()
         profile.go_to_orders_history()
         assert login.current_url == data.URLS['orders_history']
 
@@ -15,7 +15,7 @@ class TestProfile:
     def test_logout(self, login):
         profile = Profile(login)
         profile.go_to_profile()
-        profile.modal_window_is_closed()
+        profile.wait_element_disappeared()
         profile.logout()
         profile.user_redirected(data.URLS['auth_form'])
         assert login.current_url == data.URLS['auth_form']

@@ -20,10 +20,6 @@ class Profile(BasePage):
     def get_order_id(self):
         return self.wait_and_find_element(ProfileLocators.ORDER_ID).text
 
-    @allure.step('Подождать исчезновение модального окна')
-    def modal_window_is_closed(self):
-        self.wait_element_disappeared(ProfileLocators.MODAL_OVERLAY)
-
     @allure.step('Подождать загрузки страницы')
     def user_redirected(self, url):
         self.wait_url_to_be_loaded(url)

@@ -22,7 +22,7 @@ class Constructor(BasePage):
 
     @allure.step('Закрыть модальное окно')
     def close_modal_window(self):
-        self.wait_and_find_element(ConstructorLocators.CLOSE_POPUP).click()
+        self.wait_element_to_be_clickable(ConstructorLocators.CLOSE_POPUP).click()
 
     @allure.step('Добавить ингредиент в бургер')
     def add_ingredient_to_burger(self):
